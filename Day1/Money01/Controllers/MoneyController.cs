@@ -18,8 +18,16 @@ namespace Money01.Controllers
            
             MoneyList.MyMoney = DataSource();
 
-
             return View(MoneyList);
+        }
+
+        [HttpPost]
+        public ActionResult AddItem()
+        {
+
+
+
+            return View();
         }
 
        

@@ -1,16 +1,9 @@
-﻿
+﻿@model Money02.Models.ViewModels.ShowMoneyListViewModel
+
 @{
-    ViewBag.Title = "Money";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-
-@model Money01.Models.ViewModels.MoneyListViewModel
-
-
-@*@Html.Partial("_ItemEditor")*@
-
-@Html.Partial("_AddItem")
 
 <div class="row">
     <div class="col-md-12">
@@ -38,3 +31,4 @@
         </table>
     </div>
 </div>
+
