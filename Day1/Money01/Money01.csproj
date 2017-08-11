@@ -271,6 +271,7 @@
     <Content Include="Views\Money\_ItemEditor.cshtml" />
     <Content Include="Views\Money\Index.cshtml" />
     <Content Include="Views\Money\_AddItem.cshtml" />
+    <Content Include="Views\Money\AddItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,9 +13,27 @@ namespace Money02.Controllers
         // GET: Money
         public ActionResult Index()
         {
+
+
+
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult Index(AddMoneyViewModel NewMoney)
+        {
+            /*
+            ShowMoneyListViewModel MoneyList = new ShowMoneyListViewModel();
+            List<MoneyModel> listMyMoney = new List<MoneyModel>();
+            listMyMoney.Add(new MoneyModel() { Category = NewMoney.Category, Date = NewMoney.Date, Amount = NewMoney.Amount, Notes = NewMoney.Notes });
+            MoneyList.MyMoney = listMyMoney;            
+            return View(MoneyList);*/
+
+            return View(); 
+        }
+
+        [ChildActionOnly]
         public ActionResult ShowMoneyList()
         {
             ShowMoneyListViewModel MoneyList = new ShowMoneyListViewModel();
