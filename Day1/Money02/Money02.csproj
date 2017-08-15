@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -202,10 +204,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountBook.cs">
+      <DependentUpon>SkillTreeHomework.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MoneyModel.cs" />
+    <Compile Include="Models\SkillTreeHomework.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkillTreeHomework.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SkillTreeHomework.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkillTreeHomework.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SkillTreeHomework.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkillTreeHomework.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\MoneyListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -221,10 +241,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\SkillTreeHomework.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkillTreeHomework.edmx</DependentUpon>
+      <LastGenOutput>SkillTreeHomework.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SkillTreeHomework.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkillTreeHomework.edmx</DependentUpon>
+      <LastGenOutput>SkillTreeHomework.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\SkillTreeHomework.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SkillTreeHomework.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SkillTreeHomework.edmx.diagram">
+      <DependentUpon>SkillTreeHomework.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -275,7 +312,9 @@
     <Content Include="Views\Money\Index.cshtml" />
     <Content Include="Views\Money\ShowMoneyList.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
