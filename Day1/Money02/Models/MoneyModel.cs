@@ -8,6 +8,8 @@ namespace Money02.Models
 {
     public class MoneyModel
     {
+        public Guid Id { get; set; }
+
         [Display(Name = "類別")]
         public string Category { get; set; }
 
@@ -15,7 +17,6 @@ namespace Money02.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Date { get; set; }
-
 
         [DisplayFormat(DataFormatString = "{0:###,###}")]
         [Display(Name = "金額")]
