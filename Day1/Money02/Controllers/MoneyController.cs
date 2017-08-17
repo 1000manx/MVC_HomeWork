@@ -19,18 +19,31 @@ namespace Money02.Controllers
             _moneyService = new MoneyService(uniOfWork);
         }
 
-
         // GET: Money
         public ActionResult Index()
-        {
+        {           
             return View();
         }
 
 
-        [HttpPost]
-        public ActionResult Index(AddMoneyViewModel NewMoney)
+        public ActionResult Create()
         {         
-            return View(); 
+            ViewBag.Categoryyy = _moneyService.GetCategoryItems();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(AccountBook NewMoney)
+        {
+            if (ModelState.IsValid)
+            {
+                NewMoney.Id = Guid.NewGuid();
+                _moneyService.Create(NewMoney);
+                _moneyService.Save();                
+            }
+
+            ViewBag.Categoryyy = _moneyService.GetCategoryItems();
+            return View();            
         }
 
         [ChildActionOnly]
@@ -41,6 +54,7 @@ namespace Money02.Controllers
             MoneyList.MyMoney = source.ToList();
 
             return View(MoneyList);
-        }
+        }      
+
     }
 }

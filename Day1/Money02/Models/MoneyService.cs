@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.Web.Mvc;
 using Money02.Models;
 using Money02.Repositories;
 using Money02.Models.ViewModels;
@@ -22,6 +22,17 @@ namespace Money02.Models
             _accountBookRep = new Repository<AccountBook>(unitOfWork);
         }
 
+        public List<SelectListItem>  GetCategoryItems()
+        {
+            List<SelectListItem> items = new List<SelectListItem>()
+            {
+                new SelectListItem {Text="請選擇", Value="" },
+                new SelectListItem {Text="支出", Value="0" },
+                new SelectListItem {Text="收入", Value="1" }
+            };
+
+            return items;
+        }
 
         public IEnumerable<MoneyModel> GetAllData()
         {
@@ -37,7 +48,17 @@ namespace Money02.Models
             });            
 
             return result;
-        }   
+        }
+
+        public void Create(AccountBook ActBook)
+        {
+            _accountBookRep.Create(ActBook);
+        }
+
+        public void Save()
+        {
+            _accountBookRep.Commit();
+        }
 
         enum Categories
         {
