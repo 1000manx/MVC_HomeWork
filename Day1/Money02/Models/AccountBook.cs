@@ -15,25 +15,14 @@ namespace Money02.Models
     
     public partial class AccountBook
     {
-        public System.Guid Id { get; set; }
-                        
-        [Required]
-        [Display(Name = "類別")]
-        public int Categoryyy { get; set; }
-           
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:###,###}")]
-        [Display(Name = "金額")]
+        public System.Guid Id { get; set; }                        
+      
+        public int Categoryyy { get; set; }           
+       
         public int Amounttt { get; set; }
-        
-        [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
-        [Display(Name = "日期")]
+               
         public System.DateTime Dateee { get; set; }
-
-        [Required]
-        [Display(Name = "備註")]        
+         
         public string Remarkkk { get; set; }
     }
 }

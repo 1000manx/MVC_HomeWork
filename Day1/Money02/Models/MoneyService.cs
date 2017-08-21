@@ -50,8 +50,17 @@ namespace Money02.Models
             return result;
         }
 
-        public void Create(AccountBook ActBook)
+        public void Create(MoneyCreateViewModel MoneyCreateViewModel)
         {
+            var ActBook = new AccountBook
+            {
+                Id=MoneyCreateViewModel.Id,
+                Categoryyy=MoneyCreateViewModel.Category,
+                Amounttt = MoneyCreateViewModel.Amount,
+                Dateee=MoneyCreateViewModel.Date,
+                Remarkkk=MoneyCreateViewModel.Remark
+            };      
+
             _accountBookRep.Create(ActBook);
         }
 

@@ -33,7 +33,7 @@ namespace Money02.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(AccountBook NewMoney)
+        public ActionResult Create(MoneyCreateViewModel NewMoney)
         {
             if (ModelState.IsValid)
             {
