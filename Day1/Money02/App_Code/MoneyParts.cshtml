@@ -1,0 +1,14 @@
+﻿@using System.Web.Mvc
+@using Money02.Models.ViewModels
+
+@helper CategoryDisplay(int Category)
+{
+    if (Category == 0)
+    {        
+        <td class="CategoryExpense">支出</td>
+    }
+    if (Category == 1)
+    {        
+        <td class="CategoryIncome">收入</td>
+    }
+}

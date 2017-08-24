@@ -8,6 +8,7 @@ namespace Money02.Models.ViewModels
 {
     public class ShowMoneyListViewModel
     {
-        public List<MoneyModel> MyMoney { get; set; }
+        //public List<MoneyModel> MyMoney { get; set; }
+        public PagedList.IPagedList<MoneyModel> MyMoney { get; set; }
     }   
 }

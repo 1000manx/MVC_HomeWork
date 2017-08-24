@@ -6,11 +6,13 @@ using System.Web.Mvc;
 using Money02.Models;
 using Money02.Models.ViewModels;
 using Money02.Repositories;
+using PagedList;
 
 namespace Money02.Controllers
 {
     public class MoneyController : Controller
     {
+        private int pageSize = 10;
         private readonly MoneyService _moneyService;
 
         public MoneyController()
@@ -24,11 +26,15 @@ namespace Money02.Controllers
         {           
             return View();
         }
-
-
+             
         public ActionResult Create()
-        {         
-            ViewBag.Categoryyy = _moneyService.GetCategoryItems();
+        {
+            ViewBag.Category = _moneyService.GetCategoryItems();
+
+            ShowMoneyListViewModel MoneyList = new ShowMoneyListViewModel();
+            MoneyList.MyMoney = _moneyService.DisplayPagedData(1, pageSize);
+            ViewData["MoneyData"] = MoneyList;
+
             return View();
         }
 
@@ -37,24 +43,31 @@ namespace Money02.Controllers
         {
             if (ModelState.IsValid)
             {
-                NewMoney.Id = Guid.NewGuid();
+                NewMoney.Id = Guid.NewGuid();                
                 _moneyService.Create(NewMoney);
                 _moneyService.Save();                
             }
 
-            ViewBag.Categoryyy = _moneyService.GetCategoryItems();
+            ViewBag.Category = _moneyService.GetCategoryItems();
+
+            ShowMoneyListViewModel MoneyList = new ShowMoneyListViewModel();
+            MoneyList.MyMoney = _moneyService.DisplayPagedData(1, pageSize);
+            ViewData["MoneyData"] = MoneyList;
+
             return View();            
         }
 
-        [ChildActionOnly]
-        public ActionResult ShowMoneyList()
-        {
-            ShowMoneyListViewModel MoneyList = new ShowMoneyListViewModel();            
-            var source = _moneyService.GetAllData();
-            MoneyList.MyMoney = source.ToList();
+        [HttpPost]
+        public ActionResult ShowMoneyList(int? page)
+        {          
+            var pageIndex = page ?? 1;
 
-            return View(MoneyList);
+            ShowMoneyListViewModel MoneyList = new ShowMoneyListViewModel();
+            MoneyList.MyMoney = _moneyService.DisplayPagedData(pageIndex, pageSize);
+
+            return PartialView("_ShowMoneyList", MoneyList);
         }      
 
+        
     }
 }

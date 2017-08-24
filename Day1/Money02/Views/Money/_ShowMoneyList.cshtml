@@ -23,7 +23,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        @*@Html.PagedListPager((IPagedList)Model.MyMoney, page => Url.Action("Create", "Money", new { page }))*@
+        
         <table class="table table-bordered table-hover">
             <tr>
                 <th>#</th>
@@ -37,22 +37,24 @@
                 for (int i = 0; i < Model.MyMoney.Count(); i++)
                 {
                     <tr>
-                        <td> @(i + 1)</td>                        
-                        @MoneyParts.CategoryDisplay(Model.MyMoney[i].Category)                                        
+                        <td> @(i + 1)</td>
+                        @MoneyParts.CategoryDisplay(Model.MyMoney[i].Category)
                         <td> @Html.DisplayFor(model => Model.MyMoney[i].Date)</td>
                         <td> @Html.DisplayFor(model => Model.MyMoney[i].Amount)</td>
                     </tr>
                 }
             }
         </table>
-        @*@Html.PagedListPager((IPagedList)Model.MyMoney, page => Url.Action("Create", "Money", new { page }))*@
-    </div>
+   </div>
 </div>
+
+
 @Html.PagedListPager((IPagedList)Model.MyMoney,
-    page => Url.Action("QueryPaged", new { page, Model }),
+    page => Url.Action("ShowMoneyList", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
     {
         HttpMethod = "POST",
         UpdateTargetId = "divPartialView"
     }))
+
 

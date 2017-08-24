@@ -18,11 +18,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("我的記帳本", "Index", "Money", new { area = "" }, new { @class = "navbar-brand" })*@
-                @Html.ActionLink("我的記帳本", "Index", "Money", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Creta Account Item", "Create", "Money", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Creta Account Item", "Create", "Money")</li>
+                <ul class="nav navbar-nav">                   
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

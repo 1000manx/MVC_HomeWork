@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Money02.Models;
 using Money02.Repositories;
 using Money02.Models.ViewModels;
+using PagedList;
 
 
 namespace Money02.Models
@@ -14,7 +15,6 @@ namespace Money02.Models
     {
         private readonly IRepository<AccountBook> _accountBookRep;
         private readonly IUnitOfWork _uniOfWork;
-
 
         public MoneyService(IUnitOfWork unitOfWork)
         {
@@ -32,22 +32,22 @@ namespace Money02.Models
             };
 
             return items;
-        }
+        }    
 
-        public IEnumerable<MoneyModel> GetAllData()
+        public IPagedList<MoneyModel> DisplayPagedData(int currentPage, int pageSize)
         {
-            var source = _accountBookRep.LookupAll();
+            var source = _accountBookRep.LookupAll().OrderByDescending(m => m.Dateee);
 
             var result = source.Select(m => new MoneyModel()
             {
-                Id= m.Id,
-                Category= ((Categories)m.Categoryyy).ToString(),
-                Date =m.Dateee,
-                Amount=m.Amounttt,
-                Notes=m.Remarkkk                
-            });            
+                Id = m.Id,                
+                Category = m.Categoryyy,
+                Date = m.Dateee,
+                Amount = m.Amounttt,
+                Notes = m.Remarkkk
+            });
 
-            return result;
+            return result.ToPagedList(currentPage, pageSize);
         }
 
         public void Create(MoneyCreateViewModel MoneyCreateViewModel)
@@ -68,11 +68,6 @@ namespace Money02.Models
         {
             _accountBookRep.Commit();
         }
-
-        enum Categories
-        {
-            支出,
-            收入,
-        };
+             
     }
 }

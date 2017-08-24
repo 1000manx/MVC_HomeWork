@@ -11,7 +11,7 @@ namespace Money02.Models
         public Guid Id { get; set; }
 
         [Display(Name = "類別")]
-        public string Category { get; set; }
+        public int Category { get; set; }
 
         [Display(Name = "日期")]
         [DataType(DataType.Date)]
